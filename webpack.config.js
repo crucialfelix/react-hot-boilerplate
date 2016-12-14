@@ -14,14 +14,18 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
+    // new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
   ],
   module: {
-    loaders: [{
+    rules: [{
       test: /\.jsx?$/,
-      loaders: ['babel'],
+      use: [
+        {
+          loader: 'babel-loader'
+        }
+      ],
       include: path.join(__dirname, 'src')
     }]
   }
